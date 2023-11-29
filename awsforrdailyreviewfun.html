@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    
+    <title>aswforrdailyreview.fun</title>
+    
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            /* Light blue background */
+            color: #333333;
+            /* Dark text for readability */
+        }
+
+        .header {
+            background-color: #ff69b4;
+            /* Bright pink header */
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 2em;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two equal-sized columns */
+            grid-gap: 20px;
+            justify-items: center; /* Center items horizontally */
+            align-items: start; /* Align items to the start vertically */
+            padding: 20px;
+        }
+
+        .gallery-item {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 100%; /* Adjust the width of gallery items */
+            max-width: 500px; /* Maximum width for larger screens */
+            padding: 15px;
+            text-align: center;
+        }
+
+        img {
+            width: 100%; /* Image takes full width of the gallery item */
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: calc(100% - 40px); /* Full width minus padding */
+            margin: 20px auto;
+            max-width: 1200px; /* Maximum width of the container */
+            width: 80%;
+            overflow: hidden;
+        }
+
+        p {
+            color: #333333;
+            font-size: 1.1em;
+        }
+
+        .buy-now {
+            background-color: #ff69b4; /* Bright pink background */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .buy-now:hover {
+            background-color: #ccc; /* Gray background when hovered */
+            cursor: not-allowed; /* Show a disabled cursor on hover */
+        }
+		
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Welcome to My Playful Digital Store</h1>
+    </div>
+    
+    <div class="gallery container" id="gallery-container">
+        <!-- Gallery items injected here by JavaScript -->
+    </div>
+        
+    <script>
+        var imageData = [
+            {
+                "name": "Whimsical Builder Bot",
+                "image_path": "/assets/1.png",
+                "description": "Get ready to assemble some fun with the adorable 'Builder Bot' Funko Pop! It's designed to inspire builders and dreamers of all ages."
+            },
+            {
+                "name": "Adorable Robo-Cake",
+                "image_path": "/assets/2.png",
+                "description": "Satisfy your sweet tooth with the multi-layered, 'Robo-Cake' Funko Pop! A perfect blend of sugary sweetness and high-tech charm."
+            },
+            {
+                "name": "AWS Layered Cake",
+                "image_path": "/assets/3.png",
+                "description": "This playful, multi-tiered cake is a feast for the eyes, whimsically blending the charm of a bakery with the colorful imagination of a toy factory."
+            },
+            {
+                "name": "Tiny Robo Thinker",
+                "image_path": "/assets/4.png",
+                "description": "This small robot with a thoughtful expression brings a touch of warmth and charm to the world of artificial intelligence."
+            },
+            {
+                "name": "Thumbs-up Tech Pal",
+                "image_path": "/assets/5.png",
+                "description": "A friendly robot gives a thumbs-up, ready to assist with its colorful, user-friendly buttons and dials."
+            },
+            {
+                "name": "Cute Cloud Companions",
+                "image_path": "/assets/6.png",
+                "description": "Floating amidst digital accents, these adorable clouds with expressive faces bring a friendly touch to the tech skies."
+            },
+            {
+                "name": "Candy Cloud Interface",
+                "image_path": "/assets/7.png",
+                "description": "A cheerful cloud with a digital interface and a backdrop of circuitry, symbolizing the soft and hard aspects of cloud computing."
+            },
+            {
+                "name": "Curious Tech Whizbot",
+                "image_path": "/assets/8.png",
+                "description": "A bright-eyed robot with a speech bubble simply asks, “How?” invoking the eternal curiosity of innovators."
+            },
+            {
+                "name": "Fun Presentation Poster",
+                "image_path": "/assets/9.png",
+                "description": "This vibrant poster announces an integration of AWS, GitHub, and Slack, promising a playful journey through daily tech reviews."
+            },
+            {
+                "name": "Corporate AWS Poster",
+                "image_path": "/assets/10.png",
+                "description": "This poster casts AWS in a sinister light, with its shadowy backdrop and cryptic digital symbols evoking a dystopian tech dominance."
+            },
+        ];
+
+        function createGalleryItems(items) {
+            var container = document.getElementById('gallery-container');
+
+            items.forEach(function (item) {
+                var galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+
+                var image = document.createElement('img');
+                image.src = item.image_path;
+                image.alt = item.name;
+
+                var title = document.createElement('h3');
+                title.textContent = item.name;
+
+                var comingSoon = document.createElement('p');
+                comingSoon.textContent = "*Coming Soon!*";
+                comingSoon.style.fontWeight = "bold";
+
+                var description = document.createElement('p');
+                description.textContent = item.description;
+
+                var buyNowButton = document.createElement('button');
+                buyNowButton.textContent = 'Buy Now';
+                buyNowButton.className = 'buy-now';
+
+                galleryItem.appendChild(image);
+                galleryItem.appendChild(title);
+                galleryItem.appendChild(comingSoon);
+                galleryItem.appendChild(description);
+                galleryItem.appendChild(buyNowButton);
+
+                container.appendChild(galleryItem);
+            });
+        }
+
+        // Call the function on window load
+        window.onload = function () {
+            createGalleryItems(imageData);
+        };
+    
+    </script>
+</body>
+
+</html>
